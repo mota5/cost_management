@@ -39,3 +39,6 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
+group :test, :development do
+  gem "rspec-rails", "~> 2.6"
+end

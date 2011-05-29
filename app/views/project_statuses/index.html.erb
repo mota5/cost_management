@@ -1,0 +1,27 @@
+<h1>Listing project_statuses</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Sort no</th>
+    <th>Lock version</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_statuses.each do |project_status| %>
+  <tr>
+    <td><%= project_status.name %></td>
+    <td><%= project_status.sort_no %></td>
+    <td><%= project_status.lock_version %></td>
+    <td><%= link_to 'Show', project_status %></td>
+    <td><%= link_to 'Edit', edit_project_status_path(project_status) %></td>
+    <td><%= link_to 'Destroy', project_status, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project status', new_project_status_path %>

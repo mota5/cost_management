@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Project:</b>
+  <%= @plant.project_id %>
+</p>
+
+<p>
+  <b>Plant category:</b>
+  <%= @plant.plant_category_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @plant.user_id %>
+</p>
+
+<p>
+  <b>Started at:</b>
+  <%= @plant.started_at %>
+</p>
+
+<p>
+  <b>Ended at:</b>
+  <%= @plant.ended_at %>
+</p>
+
+<p>
+  <b>Memo:</b>
+  <%= @plant.memo %>
+</p>
+
+<p>
+  <b>Lock version:</b>
+  <%= @plant.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_plant_path(@plant) %> |
+<%= link_to 'Back', plants_path %>

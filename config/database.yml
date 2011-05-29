@@ -32,9 +32,9 @@ development:
       host: localhost
       adapter: jdbc
       driver: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/kosu_development
-      username: kosu_user
-      password: kosu_passwd
+      url: jdbc:mysql://localhost:3306/cost_management_development
+      username: cost_manage_user
+      password: cost_manage_passwd
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -43,14 +43,14 @@ test:
       host: localhost
       adapter: jdbc
       driver: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/kosu_test
-      username: kosu_user
-      password: kosu_passwd
+      url: jdbc:mysql://localhost:3306/cost_management_test
+      username: cost_manage_user
+      password: cost_manage_passwd
 
 production:
       host: localhost
       adapter: jdbc
       driver: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/kosu_production
-      username: kosu_user
-      password: kosu_passwd
+      url: jdbc:mysql://localhost:3306/cost_management_production
+      username: cost_manage_user
+      password: cost_manage_passwd

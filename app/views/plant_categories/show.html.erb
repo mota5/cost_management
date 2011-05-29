@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @plant_category.name %>
+</p>
+
+<p>
+  <b>Superior plant category:</b>
+  <%= @plant_category.superior_plant_category_id %>
+</p>
+
+<p>
+  <b>Sort no:</b>
+  <%= @plant_category.sort_no %>
+</p>
+
+<p>
+  <b>Lock version:</b>
+  <%= @plant_category.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_plant_category_path(@plant_category) %> |
+<%= link_to 'Back', plant_categories_path %>

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @post.name %>
+</p>
+
+<p>
+  <b>Superior post:</b>
+  <%= @post.superior_post_id %>
+</p>
+
+<p>
+  <b>Sort no:</b>
+  <%= @post.sort_no %>
+</p>
+
+<p>
+  <b>Lock version:</b>
+  <%= @post.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

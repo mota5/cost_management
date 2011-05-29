@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @section.name %>
+</p>
+
+<p>
+  <b>Sort no:</b>
+  <%= @section.sort_no %>
+</p>
+
+<p>
+  <b>Lock version:</b>
+  <%= @section.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

@@ -1,0 +1,2 @@
+module PlantCategoriesHelper
+end
