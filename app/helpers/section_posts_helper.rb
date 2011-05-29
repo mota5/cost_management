@@ -1,0 +1,2 @@
+module SectionPostsHelper
+end

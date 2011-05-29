@@ -1,0 +1,27 @@
+<h1>Listing user_projects</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Project</th>
+    <th>Lock version</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_projects.each do |user_project| %>
+  <tr>
+    <td><%= user_project.user_id %></td>
+    <td><%= user_project.project_id %></td>
+    <td><%= user_project.lock_version %></td>
+    <td><%= link_to 'Show', user_project %></td>
+    <td><%= link_to 'Edit', edit_user_project_path(user_project) %></td>
+    <td><%= link_to 'Destroy', user_project, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User project', new_user_project_path %>

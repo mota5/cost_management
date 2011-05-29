@@ -1,0 +1,33 @@
+<%= form_for(@user_section_post) do |f| %>
+  <% if @user_section_post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_section_post.errors.count, "error") %> prohibited this user_section_post from being saved:</h2>
+
+      <ul>
+      <% @user_section_post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :section_id %><br />
+    <%= f.text_field :section_id %>
+  </div>
+  <div class="field">
+    <%= f.label :post_id %><br />
+    <%= f.text_field :post_id %>
+  </div>
+  <div class="field">
+    <%= f.label :lock_version %><br />
+    <%= f.text_field :lock_version %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

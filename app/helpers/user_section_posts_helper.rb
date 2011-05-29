@@ -1,0 +1,2 @@
+module UserSectionPostsHelper
+end

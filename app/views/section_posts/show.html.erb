@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Section:</b>
+  <%= @section_post.section_id %>
+</p>
+
+<p>
+  <b>Post:</b>
+  <%= @section_post.post_id %>
+</p>
+
+<p>
+  <b>Lock version:</b>
+  <%= @section_post.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_section_post_path(@section_post) %> |
+<%= link_to 'Back', section_posts_path %>

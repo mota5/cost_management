@@ -1,0 +1,29 @@
+<h1>Listing user_section_posts</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Section</th>
+    <th>Post</th>
+    <th>Lock version</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_section_posts.each do |user_section_post| %>
+  <tr>
+    <td><%= user_section_post.user_id %></td>
+    <td><%= user_section_post.section_id %></td>
+    <td><%= user_section_post.post_id %></td>
+    <td><%= user_section_post.lock_version %></td>
+    <td><%= link_to 'Show', user_section_post %></td>
+    <td><%= link_to 'Edit', edit_user_section_post_path(user_section_post) %></td>
+    <td><%= link_to 'Destroy', user_section_post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User section post', new_user_section_post_path %>

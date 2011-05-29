@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529151556) do
+ActiveRecord::Schema.define(:version => 20110529160318) do
 
   create_table "plant_categories", :force => true do |t|
     t.string   "name",                       :null => false
@@ -44,6 +44,28 @@ ActiveRecord::Schema.define(:version => 20110529151556) do
     t.datetime "updated_at"
   end
 
+  create_table "project_plant_categories", :force => true do |t|
+    t.integer  "project_id",        :null => false
+    t.integer  "plant_category_id", :null => false
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_plant_categories", ["plant_category_id", "project_id"], :name => "project_plant_categories_idx2", :unique => true
+  add_index "project_plant_categories", ["project_id", "plant_category_id"], :name => "project_plant_categories_idx1", :unique => true
+
+  create_table "project_report_plant_categories", :force => true do |t|
+    t.integer  "project_id",        :null => false
+    t.integer  "plant_category_id", :null => false
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_report_plant_categories", ["plant_category_id", "project_id"], :name => "project_report_plant_categories_idx2", :unique => true
+  add_index "project_report_plant_categories", ["project_id", "plant_category_id"], :name => "project_report_plant_categories_idx1", :unique => true
+
   create_table "project_statuses", :force => true do |t|
     t.string   "name",         :null => false
     t.integer  "sort_no"
@@ -60,6 +82,17 @@ ActiveRecord::Schema.define(:version => 20110529151556) do
     t.datetime "updated_at"
   end
 
+  create_table "section_posts", :force => true do |t|
+    t.integer  "section_id",   :null => false
+    t.integer  "post_id",      :null => false
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "section_posts", ["post_id", "section_id"], :name => "index_section_posts_on_post_id_and_section_id", :unique => true
+  add_index "section_posts", ["section_id", "post_id"], :name => "index_section_posts_on_section_id_and_post_id", :unique => true
+
   create_table "sections", :force => true do |t|
     t.string   "name",                :null => false
     t.integer  "superior_section_id"
@@ -68,6 +101,30 @@ ActiveRecord::Schema.define(:version => 20110529151556) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "user_projects", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.integer  "project_id",   :null => false
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_projects", ["project_id", "user_id"], :name => "index_user_projects_on_project_id_and_user_id", :unique => true
+  add_index "user_projects", ["user_id", "project_id"], :name => "index_user_projects_on_user_id_and_project_id", :unique => true
+
+  create_table "user_section_posts", :force => true do |t|
+    t.integer  "user_id",      :null => false
+    t.integer  "section_id",   :null => false
+    t.integer  "post_id"
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_section_posts", ["post_id"], :name => "index_user_section_posts_on_post_id"
+  add_index "user_section_posts", ["section_id"], :name => "index_user_section_posts_on_section_id"
+  add_index "user_section_posts", ["user_id", "section_id", "post_id"], :name => "index_user_section_posts_on_user_id_and_section_id_and_post_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "login_code",       :null => false

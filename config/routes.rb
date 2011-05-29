@@ -1,4 +1,14 @@
 CostManagement::Application.routes.draw do
+  resources :user_section_posts
+
+  resources :section_posts
+
+  resources :user_projects
+
+  resources :project_report_plant_categories
+
+  resources :project_plant_categories
+
   resources :plants
 
   resources :plant_categories
