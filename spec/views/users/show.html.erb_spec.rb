@@ -10,7 +10,6 @@ describe "users/show.html.erb" do
       :family_kana_name => "Family Kana Name",
       :first_kana_name => "First Kana Name",
       :email_address => "Email Address",
-      :superior_user_id => 1,
       :lock_version => 1
     ))
   end
@@ -31,8 +30,6 @@ describe "users/show.html.erb" do
     rendered.should match(/First Kana Name/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Email Address/)
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    rendered.should match(/1/)
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/1/)
   end

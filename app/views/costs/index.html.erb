@@ -1,0 +1,33 @@
+<h1>Listing costs</h1>
+
+<table>
+  <tr>
+    <th>Activity</th>
+    <th>User</th>
+    <th>Started at</th>
+    <th>Ended at</th>
+    <th>Memo</th>
+    <th>Lock version</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @costs.each do |cost| %>
+  <tr>
+    <td><%= cost.activity_id %></td>
+    <td><%= cost.user_id %></td>
+    <td><%= cost.started_at %></td>
+    <td><%= cost.ended_at %></td>
+    <td><%= cost.memo %></td>
+    <td><%= cost.lock_version %></td>
+    <td><%= link_to 'Show', cost %></td>
+    <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
+    <td><%= link_to 'Destroy', cost, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cost', new_cost_path %>

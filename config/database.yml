@@ -33,6 +33,7 @@ development:
       adapter: jdbc
       driver: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/cost_management_development
+      database: cost_management_development
       username: cost_manage_user
       password: cost_manage_passwd
 
@@ -44,6 +45,7 @@ test:
       adapter: jdbc
       driver: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/cost_management_test
+      database: cost_management_test # これがないとcreate DBできない
       username: cost_manage_user
       password: cost_manage_passwd
 
@@ -52,5 +54,6 @@ production:
       adapter: jdbc
       driver: com.mysql.jdbc.Driver
       url: jdbc:mysql://localhost:3306/cost_management_production
+      database: cost_management_production
       username: cost_manage_user
       password: cost_manage_passwd

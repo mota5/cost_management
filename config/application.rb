@@ -38,5 +38,26 @@ module CostManagement
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    # log
+    require "log4r"
+    require "log4r/outputter/datefileoutputter"
+    
+    outputter = Log4r::DateFileOutputter.new('logfile', 
+      :filename=>'sample.log', 
+      :dirname=>'D:/',
+      :date_pattern=>'%Y%m%d',
+      :trunc=>false)
+    log = Log4r::Logger.new("simpleconf")
+    log.add(outputter)
+    
+    log.debug "debug"
+    log.info "info"
+    log.warn "warn"
+    log.error "error"
+    log.fatal "fatal"
+    config.logger = log
+    
+    
   end
 end

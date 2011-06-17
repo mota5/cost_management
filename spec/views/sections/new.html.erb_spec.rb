@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "sections/new.html.erb" do
   before(:each) do
     assign(:section, stub_model(Section,
-      :name => "",
+      :name => "MyString",
       :sort_no => 1,
       :lock_version => 1
     ).as_new_record)

@@ -38,6 +38,7 @@ GEM
     jdbc-mysql (5.1.13)
     jruby-jars (1.6.2)
     jruby-rack (1.0.9)
+    log4r (1.1.9)
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -94,6 +95,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-jdbc-adapter
   jdbc-mysql
+  log4r (= 1.1.9)
   mysql2
   rails (= 3.0.7)
   rake (= 0.8.7)

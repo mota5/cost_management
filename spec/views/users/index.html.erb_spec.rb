@@ -11,7 +11,6 @@ describe "users/index.html.erb" do
         :family_kana_name => "Family Kana Name",
         :first_kana_name => "First Kana Name",
         :email_address => "Email Address",
-        :superior_user_id => 1,
         :lock_version => 1
       ),
       stub_model(User,
@@ -22,7 +21,6 @@ describe "users/index.html.erb" do
         :family_kana_name => "Family Kana Name",
         :first_kana_name => "First Kana Name",
         :email_address => "Email Address",
-        :superior_user_id => 1,
         :lock_version => 1
       )
     ])
@@ -44,8 +42,6 @@ describe "users/index.html.erb" do
     assert_select "tr>td", :text => "First Kana Name".to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Email Address".to_s, :count => 2
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => 1.to_s, :count => 2
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => 1.to_s, :count => 2
   end

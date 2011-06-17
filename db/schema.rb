@@ -10,20 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529160318) do
+ActiveRecord::Schema.define(:version => 20110617151556) do
 
-  create_table "plant_categories", :force => true do |t|
-    t.string   "name",                       :null => false
-    t.integer  "superior_plant_category_id"
+  create_table "activities", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "name"
     t.integer  "sort_no"
     t.integer  "lock_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "plants", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "plant_category_id"
+  create_table "costs", :force => true do |t|
+    t.integer  "activity_id"
     t.integer  "user_id"
     t.datetime "started_at"
     t.datetime "ended_at"
@@ -33,49 +32,30 @@ ActiveRecord::Schema.define(:version => 20110529160318) do
     t.datetime "updated_at"
   end
 
-  add_index "plants", ["project_id"], :name => "index_plants_on_project_id"
-  add_index "plants", ["user_id", "started_at"], :name => "index_plants_on_user_id_and_started_at", :unique => true
+  add_index "costs", ["activity_id"], :name => "cost_idx2"
+  add_index "costs", ["user_id", "started_at"], :name => "cost_idx1", :unique => true
 
   create_table "posts", :force => true do |t|
-    t.string   "name",         :null => false
+    t.string   "name"
     t.integer  "sort_no"
     t.integer  "lock_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "project_plant_categories", :force => true do |t|
-    t.integer  "project_id",        :null => false
-    t.integer  "plant_category_id", :null => false
+  create_table "project_users", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
     t.integer  "lock_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "project_plant_categories", ["plant_category_id", "project_id"], :name => "project_plant_categories_idx2", :unique => true
-  add_index "project_plant_categories", ["project_id", "plant_category_id"], :name => "project_plant_categories_idx1", :unique => true
-
-  create_table "project_report_plant_categories", :force => true do |t|
-    t.integer  "project_id",        :null => false
-    t.integer  "plant_category_id", :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "project_report_plant_categories", ["plant_category_id", "project_id"], :name => "project_report_plant_categories_idx2", :unique => true
-  add_index "project_report_plant_categories", ["project_id", "plant_category_id"], :name => "project_report_plant_categories_idx1", :unique => true
-
-  create_table "project_statuses", :force => true do |t|
-    t.string   "name",         :null => false
-    t.integer  "sort_no"
-    t.integer  "lock_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "project_users", ["project_id", "user_id"], :name => "project_users_idx2", :unique => true
+  add_index "project_users", ["user_id", "project_id"], :name => "project_users_idx1", :unique => true
 
   create_table "projects", :force => true do |t|
-    t.string   "name",              :null => false
+    t.string   "name"
     t.integer  "project_status_id"
     t.integer  "lock_version"
     t.datetime "created_at"
@@ -83,63 +63,47 @@ ActiveRecord::Schema.define(:version => 20110529160318) do
   end
 
   create_table "section_posts", :force => true do |t|
-    t.integer  "section_id",   :null => false
-    t.integer  "post_id",      :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "section_posts", ["post_id", "section_id"], :name => "index_section_posts_on_post_id_and_section_id", :unique => true
-  add_index "section_posts", ["section_id", "post_id"], :name => "index_section_posts_on_section_id_and_post_id", :unique => true
-
-  create_table "sections", :force => true do |t|
-    t.string   "name",                :null => false
-    t.integer  "superior_section_id"
-    t.integer  "sort_no"
-    t.integer  "lock_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_projects", :force => true do |t|
-    t.integer  "user_id",      :null => false
-    t.integer  "project_id",   :null => false
-    t.integer  "lock_version"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "user_projects", ["project_id", "user_id"], :name => "index_user_projects_on_project_id_and_user_id", :unique => true
-  add_index "user_projects", ["user_id", "project_id"], :name => "index_user_projects_on_user_id_and_project_id", :unique => true
-
-  create_table "user_section_posts", :force => true do |t|
-    t.integer  "user_id",      :null => false
-    t.integer  "section_id",   :null => false
+    t.integer  "section_id"
     t.integer  "post_id"
     t.integer  "lock_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "user_section_posts", ["post_id"], :name => "index_user_section_posts_on_post_id"
-  add_index "user_section_posts", ["section_id"], :name => "index_user_section_posts_on_section_id"
-  add_index "user_section_posts", ["user_id", "section_id", "post_id"], :name => "index_user_section_posts_on_user_id_and_section_id_and_post_id", :unique => true
+  add_index "section_posts", ["post_id", "section_id"], :name => "section_posts_idx2", :unique => true
+  add_index "section_posts", ["section_id", "post_id"], :name => "section_posts_idx1", :unique => true
 
-  create_table "users", :force => true do |t|
-    t.string   "login_code",       :null => false
-    t.string   "login_passwd",     :null => false
-    t.string   "family_name",      :null => false
-    t.string   "first_name",       :null => false
-    t.string   "family_kana_name"
-    t.string   "first_kana_name"
-    t.string   "email_address"
-    t.integer  "superior_user_id"
+  create_table "sections", :force => true do |t|
+    t.string   "name"
+    t.integer  "sort_no"
     t.integer  "lock_version"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["login_code"], :name => "index_users_on_login_code"
+  create_table "user_section_posts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "section_post_id"
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_section_posts", ["user_id", "section_post_id"], :name => "user_section_posts_idx1", :unique => true
+
+  create_table "users", :force => true do |t|
+    t.string   "login_code"
+    t.string   "login_passwd"
+    t.string   "family_name"
+    t.string   "first_name"
+    t.string   "family_kana_name"
+    t.string   "first_kana_name"
+    t.string   "email_address"
+    t.integer  "lock_version"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["login_code"], :name => "users_idx1"
 
 end

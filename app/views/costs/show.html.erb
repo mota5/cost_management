@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Activity:</b>
+  <%= @cost.activity_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @cost.user_id %>
+</p>
+
+<p>
+  <b>Started at:</b>
+  <%= @cost.started_at %>
+</p>
+
+<p>
+  <b>Ended at:</b>
+  <%= @cost.ended_at %>
+</p>
+
+<p>
+  <b>Memo:</b>
+  <%= @cost.memo %>
+</p>
+
+<p>
+  <b>Lock version:</b>
+  <%= @cost.lock_version %>
+</p>
+
+
+<%= link_to 'Edit', edit_cost_path(@cost) %> |
+<%= link_to 'Back', costs_path %>

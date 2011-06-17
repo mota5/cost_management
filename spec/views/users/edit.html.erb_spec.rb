@@ -10,7 +10,6 @@ describe "users/edit.html.erb" do
       :family_kana_name => "MyString",
       :first_kana_name => "MyString",
       :email_address => "MyString",
-      :superior_user_id => 1,
       :lock_version => 1
     ))
   end
@@ -27,7 +26,6 @@ describe "users/edit.html.erb" do
       assert_select "input#user_family_kana_name", :name => "user[family_kana_name]"
       assert_select "input#user_first_kana_name", :name => "user[first_kana_name]"
       assert_select "input#user_email_address", :name => "user[email_address]"
-      assert_select "input#user_superior_user_id", :name => "user[superior_user_id]"
       assert_select "input#user_lock_version", :name => "user[lock_version]"
     end
   end

@@ -3,8 +3,7 @@
 <table>
   <tr>
     <th>User</th>
-    <th>Section</th>
-    <th>Post</th>
+    <th>Section post</th>
     <th>Lock version</th>
     <th></th>
     <th></th>
@@ -14,8 +13,7 @@
 <% @user_section_posts.each do |user_section_post| %>
   <tr>
     <td><%= user_section_post.user_id %></td>
-    <td><%= user_section_post.section_id %></td>
-    <td><%= user_section_post.post_id %></td>
+    <td><%= user_section_post.section_post_id %></td>
     <td><%= user_section_post.lock_version %></td>
     <td><%= link_to 'Show', user_section_post %></td>
     <td><%= link_to 'Edit', edit_user_section_post_path(user_section_post) %></td>

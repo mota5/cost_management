@@ -1,2 +1,0 @@
-module ProjectPlantCategoriesHelper
-end

@@ -1,26 +1,23 @@
 CostManagement::Application.routes.draw do
+  resources :project_users
+
+  resources :costs
+
+  resources :activities
+
+  get "test/test"
+  get "test/test2"
   resources :user_section_posts
-
   resources :section_posts
-
   resources :user_projects
-
   resources :project_report_plant_categories
-
   resources :project_plant_categories
-
   resources :plants
-
   resources :plant_categories
-
   resources :project_statuses
-
   resources :projects
-
   resources :posts
-
   resources :sections
-
   resources :users
 
   # The priority is based upon order of creation:
