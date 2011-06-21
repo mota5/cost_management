@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+    <%= select_tag(:project_id, options_from_collection_for_select(@projects, :id, :name, @cost.activity.project_id)) %>
+    <%= f.collection_select :activity_id, @activities , :id, :name %>
   <div class="field">
     <%= f.label :activity_id %><br />
     <%= f.text_field :activity_id %>

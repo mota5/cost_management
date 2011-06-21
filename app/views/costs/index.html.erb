@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Project</th>
     <th>Activity</th>
     <th>User</th>
     <th>Started at</th>
@@ -15,8 +16,9 @@
 
 <% @costs.each do |cost| %>
   <tr>
-    <td><%= cost.activity_id %></td>
-    <td><%= cost.user_id %></td>
+    <td><%= cost.activity.project.name %></td>
+    <td><%= cost.activity.name %></td>
+    <td><%= cost.user.family_name %></td>
     <td><%= cost.started_at %></td>
     <td><%= cost.ended_at %></td>
     <td><%= cost.memo %></td>

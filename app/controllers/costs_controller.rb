@@ -1,4 +1,12 @@
 class CostsController < ApplicationController
+  before_filter :initialize_form, :only=>[:new,:create,:edit,:update]
+  
+  def initialize_form
+    @projects = Project.all.find
+    @activities = Activity.all.find
+    puts 111111111111111
+  end
+  
   # GET /costs
   # GET /costs.xml
   def index

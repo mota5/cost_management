@@ -2,12 +2,17 @@
 
 <p>
   <b>Activity:</b>
-  <%= @cost.activity_id %>
+  <%= @cost.activity.project.name %>
+</p>
+
+<p>
+  <b>Activity:</b>
+  <%= @cost.activity.name %>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @cost.user_id %>
+  <%= @cost.user.family_name %><%= @cost.user.first_name %>
 </p>
 
 <p>

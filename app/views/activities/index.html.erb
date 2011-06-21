@@ -13,7 +13,7 @@
 
 <% @activities.each do |activity| %>
   <tr>
-    <td><%= activity.project_id %></td>
+    <td><%= activity.project.name %></td>
     <td><%= activity.name %></td>
     <td><%= activity.sort_no %></td>
     <td><%= activity.lock_version %></td>
