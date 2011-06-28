@@ -1,4 +1,5 @@
 CostManagement::Application.routes.draw do
+  get "costs/aaa", :controller=>:costs, :action=>:aaa
   resources :project_users
 
   resources :costs

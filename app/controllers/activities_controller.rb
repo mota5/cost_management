@@ -1,9 +1,10 @@
 class ActivitiesController < ApplicationController
+  
+  before_filter :initialize_form, :only => [:new, :create, :edit, :update]
+  
   # GET /activities
   # GET /activities.xml
   def index
-    @activities = Activity.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @activities }
@@ -79,5 +80,11 @@ class ActivitiesController < ApplicationController
       format.html { redirect_to(activities_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  
+  def initialize_form
+    @projects = Project.all.find
   end
 end

@@ -1,6 +1,7 @@
 <h1>Listing costs</h1>
 
 <table>
+  <thead>
   <tr>
     <th>Project</th>
     <th>Activity</th>
@@ -8,12 +9,13 @@
     <th>Started at</th>
     <th>Ended at</th>
     <th>Memo</th>
-    <th>Lock version</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+  </thead>
 
+  <tbody>
 <% @costs.each do |cost| %>
   <tr>
     <td><%= cost.activity.project.name %></td>
@@ -22,12 +24,12 @@
     <td><%= cost.started_at %></td>
     <td><%= cost.ended_at %></td>
     <td><%= cost.memo %></td>
-    <td><%= cost.lock_version %></td>
     <td><%= link_to 'Show', cost %></td>
     <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
     <td><%= link_to 'Destroy', cost, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <br />

@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :initialize_form, :only=>["new","create", "edit", "update"]
+
   # GET /projects
   # GET /projects.xml
   def index
@@ -80,4 +82,10 @@ class ProjectsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def initialize_form
+    @project_statuses = ProjectStatus.all.find
+  end
+
+
 end

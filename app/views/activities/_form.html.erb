@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :project_id %><br />
-    <%= f.text_field :project_id %>
+    <%= f.collection_select :project_id, @projects, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -23,10 +23,7 @@
     <%= f.label :sort_no %><br />
     <%= f.text_field :sort_no %>
   </div>
-  <div class="field">
-    <%= f.label :lock_version %><br />
-    <%= f.text_field :lock_version %>
-  </div>
+    <%= f.hidden_field :lock_version %>
   <div class="actions">
     <%= f.submit %>
   </div>

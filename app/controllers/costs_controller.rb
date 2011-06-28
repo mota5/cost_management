@@ -1,17 +1,35 @@
 class CostsController < ApplicationController
   before_filter :initialize_form, :only=>[:new,:create,:edit,:update]
   
-  def initialize_form
-    @projects = Project.all.find
-    @activities = Activity.all.find
-    puts 111111111111111
-  end
-  
   # GET /costs
   # GET /costs.xml
+  # u=<user_id>
+  # yy=<yyyy>
+  # mm=<mm>
+  # dd=<dd>
   def index
-    @costs = Cost.all
+    @costs = Cost.order "costs.started_at"
+    if params[:dd] && params[:mm] && params[:yy]
+      @costs = Cost.where(["costs.started_at >= ? and costs.started_at < ?",
+          DateTime.new(params[:yy].to_i, params[:mm].to_i, params[:dd].to_i  , 0, 0, 0),
+          DateTime.new(params[:yy].to_i, params[:mm].to_i, params[:dd].to_i + 1, 0, 0, 0)])
+    elsif params[:mm] && params[:yy]
+      @costs = Cost.where(["costs.started_at >= ? and costs.started_at < ?",
+          DateTime.new(params[:yy].to_i, params[:mm].to_i    , 1, 0, 0, 0),
+          DateTime.new(params[:yy].to_i, params[:mm].to_i + 1, 1, 0, 0, 0)])
+    elsif params[:yy]
+      @costs = Cost.where(["costs.started_at >= ? and costs.started_at < ?",
+          DateTime.new(params[:yy].to_i    , 1, 1, 0, 0, 0),
+          DateTime.new(params[:yy].to_i + 1, 1, 1, 0, 0, 0)])
+    end
+    
+    if params[:u]
+      @costs = @costs.where(["costs.user_id = ?", params[:u].to_i])
+    end
 
+    puts @costs
+    
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @costs }
@@ -32,7 +50,7 @@ class CostsController < ApplicationController
   # GET /costs/new
   # GET /costs/new.xml
   def new
-    @cost = Cost.new
+    @cost = Cost.new()
 
     respond_to do |format|
       format.html # new.html.erb
@@ -86,6 +104,17 @@ class CostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(costs_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+
+  def initialize_form
+    @users = User.all.find
+    @projects = Project.all.find
+    @activities = Activity.order "activities.project_id"
+    if params[:p]
+      @activities = @activities.where ["activities.project_id = ?", params[:p].to_i]
     end
   end
 end

@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-    <%= select_tag(:project_id, options_from_collection_for_select(@projects, :id, :name, @cost.activity.project_id)) %>
-    <%= f.collection_select :activity_id, @activities , :id, :name %>
+  <div class="field">
+    <%= label_tag :project_id %><br />
+    <%= select_tag(:project_id, options_from_collection_for_select(@projects, :id, :name, params[:p].to_i || @cost.activity.try(:project_id))) %>
+  </div>
   <div class="field">
     <%= f.label :activity_id %><br />
-    <%= f.text_field :activity_id %>
+    <%= f.collection_select :activity_id, @activities, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
+    <%= f.collection_select :user_id, @users, :id, :family_name %>
   </div>
   <div class="field">
     <%= f.label :started_at %><br />
@@ -33,11 +35,9 @@
     <%= f.label :memo %><br />
     <%= f.text_field :memo %>
   </div>
-  <div class="field">
-    <%= f.label :lock_version %><br />
-    <%= f.text_field :lock_version %>
-  </div>
+    <%= f.hidden_field :lock_version %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
