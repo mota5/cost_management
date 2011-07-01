@@ -1,13 +1,10 @@
 CostManagement::Application.routes.draw do
-  get "costs/aaa", :controller=>:costs, :action=>:aaa
+
+  get "costs/activities"
+  get "costs/costs"
   resources :project_users
-
   resources :costs
-
   resources :activities
-
-  get "test/test"
-  get "test/test2"
   resources :user_section_posts
   resources :section_posts
   resources :user_projects

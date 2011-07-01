@@ -1,0 +1,13 @@
+<% costs.each do |cost| %>
+  <tr>
+    <td><%= cost.activity.project.name %></td>
+    <td><%= cost.activity.name %></td>
+    <td><%= cost.user.family_name %></td>
+    <td><%= cost.started_at %></td>
+    <td><%= cost.ended_at %></td>
+    <td><%= cost.memo %></td>
+    <td><%= link_to 'Show', cost %></td>
+    <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
+    <td><%= link_to 'Destroy', cost, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>

@@ -5,6 +5,8 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.xml
   def index
+    @activities = Activity.order "activities.project_id"
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @activities }
