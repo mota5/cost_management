@@ -89,7 +89,7 @@ class CostsController < ApplicationController
   end
   
   def costs
-    render :partial => "costs", :locals=>{:costs=>@costs}
+#    render :partial => "costs", :locals=>{:costs=>@costs}
   end
 
   def activities
